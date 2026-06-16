@@ -250,6 +250,18 @@ document.addEventListener('DOMContentLoaded', () => {
   openConfigBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Reset all selects to "none" (not selected)
+      cpuSelect.value = 'none';
+      coolingSelect.value = 'none';
+      mbSelect.value = 'none';
+      ramSelect.value = 'none';
+      gpuSelect.value = 'none';
+      ssdSelect.value = 'none';
+      caseSelect.value = 'none';
+      psuSelect.value = 'none';
+      monitorSelect.value = 'none';
+      peripheralsSelect.value = 'none';
+      
       openModal();
     });
   });
@@ -338,7 +350,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const socketIndicator = compatSocketEl.querySelector('.status-indicator');
     const socketText = compatSocketEl.querySelector('.status-text');
 
-    if (cpuSocket === mbSocket) {
+    if (cpuOpt.value === 'none' || mbOpt.value === 'none') {
+      socketIndicator.className = 'status-indicator neutral';
+      socketText.textContent = 'Выберите процессор и материнскую плату';
+    } else if (cpuSocket === mbSocket) {
       socketIndicator.className = 'status-indicator pass';
       socketText.textContent = `Совместимость сокета и платы (Socket ${cpuSocket})`;
     } else {
@@ -348,26 +363,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // B. PSU Wattage verification
-    const cpuPower = parseInt(cpuOpt.getAttribute('data-power')) || 65;
-    const gpuPower = parseInt(gpuOpt.getAttribute('data-power')) || 150;
-    const psuWattage = parseInt(psuOpt.getAttribute('data-wattage')) || 500;
+    const cpuPower = parseInt(cpuOpt.getAttribute('data-power')) || 0;
+    const gpuPower = parseInt(gpuOpt.getAttribute('data-power')) || 0;
+    const psuWattage = parseInt(psuOpt.getAttribute('data-wattage')) || 0;
     const powerIndicator = compatPowerEl.querySelector('.status-indicator');
     const powerText = compatPowerEl.querySelector('.status-text');
 
-    // Formula: (CPU Power + GPU Power) * 1.4 safety ceiling
-    const requiredPower = Math.ceil((cpuPower + gpuPower) * 1.4);
-
-    if (psuWattage >= requiredPower) {
-      powerIndicator.className = 'status-indicator pass';
-      powerText.textContent = `Мощности БП достаточно (нужно ~${requiredPower}W, выбрано ${psuWattage}W)`;
+    if (cpuOpt.value === 'none' || gpuOpt.value === 'none' || psuOpt.value === 'none') {
+      powerIndicator.className = 'status-indicator neutral';
+      powerText.textContent = 'Выберите CPU, GPU и БП';
     } else {
-      powerIndicator.className = 'status-indicator fail';
-      powerText.textContent = `Недостаточно мощности! Выбрано ${psuWattage}W, рекомендуется ≥ ${requiredPower}W`;
-      compatibilityPassed = false;
+      const requiredPower = Math.ceil((cpuPower + gpuPower) * 1.4);
+      if (psuWattage >= requiredPower) {
+        powerIndicator.className = 'status-indicator pass';
+        powerText.textContent = `Мощности БП достаточно (нужно ~${requiredPower}W, выбрано ${psuWattage}W)`;
+      } else {
+        powerIndicator.className = 'status-indicator fail';
+        powerText.textContent = `Недостаточно мощности! Выбрано ${psuWattage}W, рекомендуется ≥ ${requiredPower}W`;
+        compatibilityPassed = false;
+      }
     }
 
-    // C. Enable or disable order button based on compatibility
-    if (compatibilityPassed) {
+    // C. Enable or disable order button based on compatibility & essential selections
+    // Essential parts: CPU, Cooling, Motherboard, RAM, GPU, SSD, Case, PSU
+    const essentialSelected = (
+      cpuOpt.value !== 'none' &&
+      coolingOpt.value !== 'none' &&
+      mbOpt.value !== 'none' &&
+      ramOpt.value !== 'none' &&
+      gpuOpt.value !== 'none' &&
+      ssdOpt.value !== 'none' &&
+      caseOpt.value !== 'none' &&
+      psuOpt.value !== 'none'
+    );
+
+    if (compatibilityPassed && essentialSelected) {
       modalOrderBtn.disabled = false;
       modalOrderBtn.style.opacity = '1';
       modalOrderBtn.style.cursor = 'pointer';
@@ -379,7 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Update PC Visual Preview depending on Selected Parts
     // Swapping renders dynamically depending on choices to make the UI feel responsive
-    if (gpuOpt.value === 'rtx-4080-super' || gpuOpt.value === 'rtx-4090' || cpuOpt.value === 'i9-14900kf' || caseOpt.value === 'nzxt-h9' || caseOpt.value === 'o11-dynamic') {
+    if (cpuOpt.value === 'none' || gpuOpt.value === 'none') {
+      previewImgEl.src = 'pc-config-assets-separate/hero/hero-pc-white-rgb.png';
+    } else if (gpuOpt.value === 'rtx-4080-super' || gpuOpt.value === 'rtx-4090' || cpuOpt.value === 'i9-14900kf' || caseOpt.value === 'nzxt-h9' || caseOpt.value === 'o11-dynamic') {
       previewImgEl.src = 'pc-config-assets-separate/builds/enthusiast-pro-build.png';
     } else if (gpuOpt.value === 'rtx-4070' || gpuOpt.value === 'rtx-4070super' || cpuOpt.value === 'r5-7600' || cpuOpt.value === 'r7-7800x3d') {
       previewImgEl.src = 'pc-config-assets-separate/builds/optimal-game-build.png';

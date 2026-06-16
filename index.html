@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   
@@ -593,13 +593,14 @@
             </label>
             <div class="select-wrapper">
               <select id="cpu-select">
+                <option value="none" data-price="0" data-socket="" data-power="0" selected>Не выбрано — 0 ₽</option>
                 <option value="i3-12100f" data-price="7200" data-socket="LGA1700" data-power="65">Intel Core i3-12100F (LGA1700, 65W) — 7 200 ₽</option>
                 <option value="i5-12400f" data-price="12500" data-socket="LGA1700" data-power="65">Intel Core i5-12400F (LGA1700, 65W) — 12 500 ₽</option>
                 <option value="i5-13600kf" data-price="26900" data-socket="LGA1700" data-power="125">Intel Core i5-13600KF (LGA1700, 125W) — 26 900 ₽</option>
                 <option value="i7-14700kf" data-price="38900" data-socket="LGA1700" data-power="125">Intel Core i7-14700KF (LGA1700, 125W) — 38 900 ₽</option>
                 <option value="i9-14900kf" data-price="54900" data-socket="LGA1700" data-power="150">Intel Core i9-14900KF (LGA1700, 150W) — 54 900 ₽</option>
                 <option value="r5-5600" data-price="10500" data-socket="AM4" data-power="65">AMD Ryzen 5 5600 (AM4, 65W) — 10 500 ₽</option>
-                <option value="r5-7600" data-price="18900" data-socket="AM5" data-power="65" selected>AMD Ryzen 5 7600 (AM5, 65W) — 18 900 ₽</option>
+                <option value="r5-7600" data-price="18900" data-socket="AM5" data-power="65">AMD Ryzen 5 7600 (AM5, 65W) — 18 900 ₽</option>
                 <option value="r7-7800x3d" data-price="42500" data-socket="AM5" data-power="120">AMD Ryzen 7 7800X3D (AM5, 120W) — 42 500 ₽</option>
                 <option value="r9-7950x" data-price="51900" data-socket="AM5" data-power="170">AMD Ryzen 9 7950X (AM5, 170W) — 51 900 ₽</option>
               </select>
@@ -613,7 +614,8 @@
             </label>
             <div class="select-wrapper">
               <select id="cooling-select">
-                <option value="ag400" data-price="2200" selected>Deepcool AG400 (TDP 150W, Воздушное) — 2 200 ₽</option>
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
+                <option value="ag400" data-price="2200">Deepcool AG400 (TDP 150W, Воздушное) — 2 200 ₽</option>
                 <option value="se-224" data-price="2600">ID-COOLING SE-224-XT (TDP 180W, Воздушное) — 2 600 ₽</option>
                 <option value="dark-rock" data-price="8900">be quiet! Dark Rock Pro 4 (TDP 250W, Воздушное) — 8 900 ₽</option>
                 <option value="lt720" data-price="12500">Deepcool LT720 (TDP 300W, СЖО 360мм) — 12 500 ₽</option>
@@ -629,10 +631,11 @@
             </label>
             <div class="select-wrapper">
               <select id="mb-select">
+                <option value="none" data-price="0" data-socket="" selected>Не выбрано — 0 ₽</option>
                 <option value="b450" data-price="6800" data-socket="AM4">MSI B450M PRO-VDH (AM4) — 6 800 ₽</option>
                 <option value="b550" data-price="12500" data-socket="AM4">ASUS TUF GAMING B550-PLUS (AM4) — 12 500 ₽</option>
                 <option value="b760" data-price="11500" data-socket="LGA1700">Gigabyte B760 DS3H (LGA1700, DDR5) — 11 500 ₽</option>
-                <option value="b650" data-price="14800" data-socket="AM5" selected>MSI PRO B650-S WIFI (AM5, DDR5) — 14 800 ₽</option>
+                <option value="b650" data-price="14800" data-socket="AM5">MSI PRO B650-S WIFI (AM5, DDR5) — 14 800 ₽</option>
                 <option value="z790" data-price="24500" data-socket="LGA1700">ASUS ROG STRIX Z790-F (LGA1700, DDR5) — 24 500 ₽</option>
                 <option value="x670" data-price="28200" data-socket="AM5">ASUS PRIME X670-P (AM5, DDR5) — 28 200 ₽</option>
                 <option value="x670e" data-price="49900" data-socket="AM5">MSI MEG X670E ACE (AM5, DDR5) — 49 900 ₽</option>
@@ -647,9 +650,10 @@
             </label>
             <div class="select-wrapper">
               <select id="ram-select">
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
                 <option value="8gb-4800" data-price="2900">8GB (1x8GB) Crucial 4800MHz DDR5 — 2 900 ₽</option>
                 <option value="16gb-5200" data-price="6200">16GB (2x8GB) Kingston Fury 5200MHz — 6 200 ₽</option>
-                <option value="32gb-6000" data-price="11500" selected>32GB (2x16GB) G.Skill Ripjaws 6000MHz — 11 500 ₽</option>
+                <option value="32gb-6000" data-price="11500">32GB (2x16GB) G.Skill Ripjaws 6000MHz — 11 500 ₽</option>
                 <option value="64gb-6000" data-price="21900">64GB (2x32GB) Corsair Vengeance 6000MHz — 21 900 ₽</option>
                 <option value="128gb-5600" data-price="44900">128GB (4x32GB) Corsair Vengeance 5600MHz — 44 900 ₽</option>
               </select>
@@ -663,11 +667,12 @@
             </label>
             <div class="select-wrapper">
               <select id="gpu-select">
+                <option value="none" data-price="0" data-power="0" selected>Не выбрано — 0 ₽</option>
                 <option value="gtx-1650" data-price="13500" data-power="75">NVIDIA GeForce GTX 1650 4GB (75W) — 13 500 ₽</option>
                 <option value="rtx-3060" data-price="28900" data-power="170">NVIDIA GeForce RTX 3060 12GB (170W) — 28 900 ₽</option>
                 <option value="rtx-4060" data-price="34500" data-power="115">NVIDIA GeForce RTX 4060 8GB (115W) — 34 500 ₽</option>
                 <option value="rtx-4060ti" data-price="44900" data-power="160">NVIDIA GeForce RTX 4060 Ti 16GB (160W) — 44 900 ₽</option>
-                <option value="rtx-4070" data-price="64900" data-power="200" selected>NVIDIA GeForce RTX 4070 12GB (200W) — 64 900 ₽</option>
+                <option value="rtx-4070" data-price="64900" data-power="200">NVIDIA GeForce RTX 4070 12GB (200W) — 64 900 ₽</option>
                 <option value="rtx-4070super" data-price="69900" data-power="220">NVIDIA GeForce RTX 4070 Super 12GB (220W) — 69 900 ₽</option>
                 <option value="rtx-4080-super" data-price="118000" data-power="320">NVIDIA GeForce RTX 4080 Super 16GB (320W) — 118 000 ₽</option>
                 <option value="rtx-4090" data-price="198000" data-power="450">NVIDIA GeForce RTX 4090 24GB (450W) — 198 000 ₽</option>
@@ -685,8 +690,9 @@
             </label>
             <div class="select-wrapper">
               <select id="ssd-select">
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
                 <option value="512gb-nvme" data-price="3900">512GB ADATA Legend PCIe 3.0 NVMe — 3 900 ₽</option>
-                <option value="1tb-m2" data-price="7800" selected>1TB Kingston NV2 PCIe 4.0 NVMe — 7 800 ₽</option>
+                <option value="1tb-m2" data-price="7800">1TB Kingston NV2 PCIe 4.0 NVMe — 7 800 ₽</option>
                 <option value="2tb-m2" data-price="14500">2TB Samsung 980 Pro PCIe 4.0 — 14 500 ₽</option>
                 <option value="4tb-m2" data-price="29900">4TB Crucial P3 Plus PCIe 4.0 — 29 900 ₽</option>
               </select>
@@ -700,9 +706,10 @@
             </label>
             <div class="select-wrapper">
               <select id="case-select">
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
                 <option value="mistral" data-price="3500">Powercase Mistral Micro (Micro-ATX, 2 кулера) — 3 500 ₽</option>
                 <option value="cylon" data-price="4200">AeroCool Cylon Mini (RGB, Стекло) — 4 200 ₽</option>
-                <option value="cc560" data-price="5900" selected>Deepcool CC560 (Mid-Tower, 4 LED кулера) — 5 900 ₽</option>
+                <option value="cc560" data-price="5900">Deepcool CC560 (Mid-Tower, 4 LED кулера) — 5 900 ₽</option>
                 <option value="lancool" data-price="11500">Lian Li LANCOOL II Mesh (RGB, 3 кулера) — 11 500 ₽</option>
                 <option value="nzxt-h9" data-price="18900">NZXT H9 Flow (Premium Dual-Chamber, 4 кулера) — 18 900 ₽</option>
                 <option value="o11-dynamic" data-price="22500">Lian Li O11 Dynamic EVO (High-End Showcase) — 22 500 ₽</option>
@@ -717,10 +724,11 @@
             </label>
             <div class="select-wrapper">
               <select id="psu-select">
+                <option value="none" data-price="0" data-wattage="0" selected>Не выбрано — 0 ₽</option>
                 <option value="500w" data-price="2900" data-wattage="500">Aerocool VX Plus 500W — 2 900 ₽</option>
                 <option value="600w" data-price="4500" data-wattage="600">Deepcool PF600 600W (80+) — 4 500 ₽</option>
                 <option value="700w" data-price="5400" data-wattage="700">1stPlayer Black.Sir 700W (80+) — 5 400 ₽</option>
-                <option value="750w" data-price="8900" data-wattage="750" selected>Montech Century 750W (80+ Gold) — 8 900 ₽</option>
+                <option value="750w" data-price="8900" data-wattage="750">Montech Century 750W (80+ Gold) — 8 900 ₽</option>
                 <option value="850w" data-price="12500" data-wattage="850">Corsair RM850e 850W (80+ Gold) — 12 500 ₽</option>
                 <option value="1000w" data-price="17800" data-wattage="1000">be quiet! Straight Power 12 1000W (Platinum) — 17 800 ₽</option>
                 <option value="1200w" data-price="24500" data-wattage="1200">Thermaltake Toughpower 1200W (Gold) — 24 500 ₽</option>
@@ -735,7 +743,7 @@
             </label>
             <div class="select-wrapper">
               <select id="monitor-select">
-                <option value="none" data-price="0" selected>Без монитора — 0 ₽</option>
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
                 <option value="xiaomi-24" data-price="8900">24" Xiaomi Redmi A24 (1080p, IPS, 75Hz) — 8 900 ₽</option>
                 <option value="gigabyte-27" data-price="24500">27" Gigabyte G27Q (1440p, IPS, 144Hz) — 24 500 ₽</option>
                 <option value="lg-27" data-price="32900">27" LG UltraGear 27GP850-B (1440p, Nano-IPS, 165Hz) — 32 900 ₽</option>
@@ -752,7 +760,7 @@
             </label>
             <div class="select-wrapper">
               <select id="peripherals-select">
-                <option value="none" data-price="0" selected>Без периферии — 0 ₽</option>
+                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
                 <option value="defender" data-price="1500">Defender Harvard Keyboard + Mouse Set — 1 500 ₽</option>
                 <option value="logitech-mk" data-price="3200">Logitech MK270 Wireless Combo — 3 200 ₽</option>
                 <option value="razer-bundle" data-price="8900">Razer Power Up Bundle (Клавиатура + Мышь + Уши) — 8 900 ₽</option>
@@ -817,6 +825,6 @@
   </div>
 
   <!-- Custom Scripts -->
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

@@ -1141,6 +1141,11 @@ body.dark-theme .modal-config-summary {
   box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
 }
 
+.status-indicator.neutral {
+  background-color: var(--text-muted);
+  box-shadow: 0 0 8px var(--border-color);
+}
+
 .status-text {
   font-size: 0.85rem;
   font-weight: 500;
