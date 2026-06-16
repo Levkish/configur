@@ -500,11 +500,144 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Login button click trigger (simple visual alert)
+  /* ==========================================================================
+     5. Auth Modal (Login / Registration) Logic
+     ========================================================================== */
+  const authModal = document.getElementById('auth-modal');
   const loginBtn = document.getElementById('login-btn');
-  if (loginBtn) {
-    loginBtn.addEventListener('click', () => {
-      alert('Данная функция авторизации будет доступна в личном кабинете. Спасибо за тестирование!');
+  const authCloseBtn = document.getElementById('auth-close');
+  
+  const tabLoginBtn = document.getElementById('tab-login-btn');
+  const tabRegisterBtn = document.getElementById('tab-register-btn');
+  const loginForm = document.getElementById('login-form');
+  const registerForm = document.getElementById('register-form');
+
+  // Open Auth Modal
+  if (loginBtn && authModal) {
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      authModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Default to login form
+      switchToTab('login');
+    });
+  }
+
+  // Close Auth Modal
+  if (authCloseBtn && authModal) {
+    authCloseBtn.addEventListener('click', closeAuthModal);
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) {
+        closeAuthModal();
+      }
+    });
+  }
+
+  function closeAuthModal() {
+    authModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Tab Switching
+  function switchToTab(tab) {
+    if (tab === 'login') {
+      tabLoginBtn.classList.add('active');
+      tabRegisterBtn.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    } else {
+      tabLoginBtn.classList.remove('active');
+      tabRegisterBtn.classList.add('active');
+      loginForm.classList.remove('active');
+      registerForm.classList.add('active');
+    }
+  }
+
+  if (tabLoginBtn && tabRegisterBtn) {
+    tabLoginBtn.addEventListener('click', () => switchToTab('login'));
+    tabRegisterBtn.addEventListener('click', () => switchToTab('register'));
+  }
+
+  // Password Visibility Toggle
+  const passwordWrappers = document.querySelectorAll('.password-wrapper');
+  passwordWrappers.forEach(wrapper => {
+    const input = wrapper.querySelector('input');
+    const toggleBtn = wrapper.querySelector('.password-toggle-btn');
+    if (input && toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        if (input.type === 'password') {
+          input.type = 'text';
+          toggleBtn.textContent = '🙈';
+        } else {
+          input.type = 'password';
+          toggleBtn.textContent = '👁';
+        }
+      });
+    }
+  });
+
+  // Handle Login Submit
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeAuthModal();
+      
+      // Update success toast texts dynamically
+      const toastTitle = successToast.querySelector('h4');
+      const toastText = successToast.querySelector('p');
+      
+      const originalTitle = toastTitle.textContent;
+      const originalText = toastText.textContent;
+      
+      toastTitle.textContent = 'Вход выполнен!';
+      toastText.textContent = 'Добро пожаловать в личный кабинет!';
+      
+      successToast.classList.add('active');
+      
+      setTimeout(() => {
+        successToast.classList.remove('active');
+        // Reset text back for configurator
+        setTimeout(() => {
+          toastTitle.textContent = originalTitle;
+          toastText.textContent = originalText;
+        }, 300);
+      }, 4000);
+    });
+  }
+
+  // Handle Registration Submit
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const password = document.getElementById('reg-password').value;
+      const passwordConfirm = document.getElementById('reg-password-confirm').value;
+      
+      if (password !== passwordConfirm) {
+        alert('Пароли не совпадают!');
+        return;
+      }
+      
+      closeAuthModal();
+      
+      const toastTitle = successToast.querySelector('h4');
+      const toastText = successToast.querySelector('p');
+      
+      const originalTitle = toastTitle.textContent;
+      const originalText = toastText.textContent;
+      
+      toastTitle.textContent = 'Регистрация успешна!';
+      toastText.textContent = 'Ваш аккаунт успешно создан!';
+      
+      successToast.classList.add('active');
+      
+      setTimeout(() => {
+        successToast.classList.remove('active');
+        setTimeout(() => {
+          toastTitle.textContent = originalTitle;
+          toastText.textContent = originalText;
+        }, 300);
+      }, 4000);
     });
   }
 
