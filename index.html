@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   
@@ -243,9 +243,17 @@
         <a href="#builds" class="see-all-link animate-on-scroll" id="toggle-builds-btn">Смотреть все</a>
       </div>
 
+      <!-- Category Filter Tabs -->
+      <div class="builds-tabs animate-on-scroll">
+        <button class="tab-btn active" data-filter="all">Все сборки</button>
+        <button class="tab-btn" data-filter="gaming">Для игр</button>
+        <button class="tab-btn" data-filter="work">Для работы</button>
+        <button class="tab-btn" data-filter="study">Для учебы</button>
+      </div>
+
       <div class="builds-grid">
         <!-- Build 1: Gaming Start -->
-        <div class="build-card animate-on-scroll" data-build-id="gaming-start">
+        <div class="build-card animate-on-scroll" data-build-id="gaming-start" data-categories="gaming study">
           <div class="build-image-container">
             <img src="pc-config-assets-separate/builds/gaming-start-build.png" alt="Игровой Start" class="build-img">
           </div>
@@ -268,7 +276,7 @@
         </div>
 
         <!-- Build 2: Optimal Game -->
-        <div class="build-card animate-on-scroll" data-build-id="optimal-game">
+        <div class="build-card animate-on-scroll" data-build-id="optimal-game" data-categories="gaming">
           <div class="build-image-container">
             <img src="pc-config-assets-separate/builds/optimal-game-build.png" alt="Оптимальный Game" class="build-img">
           </div>
@@ -291,7 +299,7 @@
         </div>
 
         <!-- Build 3: Enthusiast Pro -->
-        <div class="build-card animate-on-scroll" data-build-id="enthusiast-pro">
+        <div class="build-card animate-on-scroll" data-build-id="enthusiast-pro" data-categories="gaming work">
           <div class="build-image-container">
             <img src="pc-config-assets-separate/builds/enthusiast-pro-build.png" alt="Энтузиаст Pro" class="build-img">
           </div>
@@ -314,7 +322,7 @@
         </div>
 
         <!-- Build 4: Esports Ultra -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="esports-ultra">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="esports-ultra" data-categories="gaming">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_41_57 (1).png" alt="Киберспорт Ultra" class="build-img">
           </div>
@@ -337,7 +345,7 @@
         </div>
 
         <!-- Build 5: White Stream PC -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="white-stream">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="white-stream" data-categories="gaming work">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_37 (2).png" alt="Белый Стрим-ПК" class="build-img">
           </div>
@@ -360,7 +368,7 @@
         </div>
 
         <!-- Build 6: Powerful Workstation -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="powerful-workstation">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="powerful-workstation" data-categories="work">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_38 (3).png" alt="Мощный Workstation" class="build-img">
           </div>
@@ -383,7 +391,7 @@
         </div>
 
         <!-- Build 7: Budget Gaming -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="budget-gaming">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="budget-gaming" data-categories="gaming study">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_39 (4).png" alt="Бюджетный Гейминг" class="build-img">
           </div>
@@ -406,7 +414,7 @@
         </div>
 
         <!-- Build 8: Maximum Evo -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="maximum-evo">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="maximum-evo" data-categories="gaming">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_39 (5).png" alt="Максимальный Эво" class="build-img">
           </div>
@@ -429,7 +437,7 @@
         </div>
 
         <!-- Build 9: Balanced RX -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="balanced-rx">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="balanced-rx" data-categories="gaming study">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_40 (6).png" alt="Сбалансированный RX" class="build-img">
           </div>
@@ -452,7 +460,7 @@
         </div>
 
         <!-- Build 10: Ultimate AMD -->
-        <div class="build-card extra-build animate-on-scroll" data-build-id="ultimate-amd">
+        <div class="build-card extra-build animate-on-scroll" data-build-id="ultimate-amd" data-categories="gaming work">
           <div class="build-image-container">
             <img src="новые конфиги/ChatGPT Image 16 июн. 2026 г., 01_42_37 (1).png" alt="Ультимативный AMD" class="build-img">
           </div>
@@ -614,12 +622,12 @@
             </label>
             <div class="select-wrapper">
               <select id="cooling-select">
-                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
-                <option value="ag400" data-price="2200">Deepcool AG400 (TDP 150W, Воздушное) — 2 200 ₽</option>
-                <option value="se-224" data-price="2600">ID-COOLING SE-224-XT (TDP 180W, Воздушное) — 2 600 ₽</option>
-                <option value="dark-rock" data-price="8900">be quiet! Dark Rock Pro 4 (TDP 250W, Воздушное) — 8 900 ₽</option>
-                <option value="lt720" data-price="12500">Deepcool LT720 (TDP 300W, СЖО 360мм) — 12 500 ₽</option>
-                <option value="ryujin" data-price="29900">ASUS ROG RYUJIN III 360 (TDP 350W, СЖО 360мм) — 29 900 ₽</option>
+                <option value="none" data-price="0" data-tdp="0" selected>Не выбрано — 0 ₽</option>
+                <option value="ag400" data-price="2200" data-tdp="150">Deepcool AG400 (TDP 150W, Воздушное) — 2 200 ₽</option>
+                <option value="se-224" data-price="2600" data-tdp="180">ID-COOLING SE-224-XT (TDP 180W, Воздушное) — 2 600 ₽</option>
+                <option value="dark-rock" data-price="8900" data-tdp="250">be quiet! Dark Rock Pro 4 (TDP 250W, Воздушное) — 8 900 ₽</option>
+                <option value="lt720" data-price="12500" data-tdp="300">Deepcool LT720 (TDP 300W, СЖО 360мм) — 12 500 ₽</option>
+                <option value="ryujin" data-price="29900" data-tdp="350">ASUS ROG RYUJIN III 360 (TDP 350W, СЖО 360мм) — 29 900 ₽</option>
               </select>
             </div>
           </div>
@@ -631,14 +639,14 @@
             </label>
             <div class="select-wrapper">
               <select id="mb-select">
-                <option value="none" data-price="0" data-socket="" selected>Не выбрано — 0 ₽</option>
-                <option value="b450" data-price="6800" data-socket="AM4">MSI B450M PRO-VDH (AM4) — 6 800 ₽</option>
-                <option value="b550" data-price="12500" data-socket="AM4">ASUS TUF GAMING B550-PLUS (AM4) — 12 500 ₽</option>
-                <option value="b760" data-price="11500" data-socket="LGA1700">Gigabyte B760 DS3H (LGA1700, DDR5) — 11 500 ₽</option>
-                <option value="b650" data-price="14800" data-socket="AM5">MSI PRO B650-S WIFI (AM5, DDR5) — 14 800 ₽</option>
-                <option value="z790" data-price="24500" data-socket="LGA1700">ASUS ROG STRIX Z790-F (LGA1700, DDR5) — 24 500 ₽</option>
-                <option value="x670" data-price="28200" data-socket="AM5">ASUS PRIME X670-P (AM5, DDR5) — 28 200 ₽</option>
-                <option value="x670e" data-price="49900" data-socket="AM5">MSI MEG X670E ACE (AM5, DDR5) — 49 900 ₽</option>
+                <option value="none" data-price="0" data-socket="" data-formfactor="" data-ram-type="" selected>Не выбрано — 0 ₽</option>
+                <option value="b450" data-price="6800" data-socket="AM4" data-formfactor="mATX" data-ram-type="DDR4">MSI B450M PRO-VDH (AM4, DDR4, mATX) — 6 800 ₽</option>
+                <option value="b550" data-price="12500" data-socket="AM4" data-formfactor="ATX" data-ram-type="DDR4">ASUS TUF GAMING B550-PLUS (AM4, DDR4, ATX) — 12 500 ₽</option>
+                <option value="b760" data-price="11500" data-socket="LGA1700" data-formfactor="ATX" data-ram-type="DDR5">Gigabyte B760 DS3H (LGA1700, DDR5, ATX) — 11 500 ₽</option>
+                <option value="b650" data-price="14800" data-socket="AM5" data-formfactor="ATX" data-ram-type="DDR5">MSI PRO B650-S WIFI (AM5, DDR5, ATX) — 14 800 ₽</option>
+                <option value="z790" data-price="24500" data-socket="LGA1700" data-formfactor="ATX" data-ram-type="DDR5">ASUS ROG STRIX Z790-F (LGA1700, DDR5, ATX) — 24 500 ₽</option>
+                <option value="x670" data-price="28200" data-socket="AM5" data-formfactor="ATX" data-ram-type="DDR5">ASUS PRIME X670-P (AM5, DDR5, ATX) — 28 200 ₽</option>
+                <option value="x670e" data-price="49900" data-socket="AM5" data-formfactor="ATX" data-ram-type="DDR5">MSI MEG X670E ACE (AM5, DDR5, ATX) — 49 900 ₽</option>
               </select>
             </div>
           </div>
@@ -650,12 +658,13 @@
             </label>
             <div class="select-wrapper">
               <select id="ram-select">
-                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
-                <option value="8gb-4800" data-price="2900">8GB (1x8GB) Crucial 4800MHz DDR5 — 2 900 ₽</option>
-                <option value="16gb-5200" data-price="6200">16GB (2x8GB) Kingston Fury 5200MHz — 6 200 ₽</option>
-                <option value="32gb-6000" data-price="11500">32GB (2x16GB) G.Skill Ripjaws 6000MHz — 11 500 ₽</option>
-                <option value="64gb-6000" data-price="21900">64GB (2x32GB) Corsair Vengeance 6000MHz — 21 900 ₽</option>
-                <option value="128gb-5600" data-price="44900">128GB (4x32GB) Corsair Vengeance 5600MHz — 44 900 ₽</option>
+                <option value="none" data-price="0" data-ram-type="" selected>Не выбрано — 0 ₽</option>
+                <option value="8gb-3200" data-price="2100" data-ram-type="DDR4">8GB (1x8GB) Crucial 3200MHz DDR4 — 2 100 ₽</option>
+                <option value="16gb-3200" data-price="4500" data-ram-type="DDR4">16GB (2x8GB) Kingston Fury 3200MHz DDR4 — 4 500 ₽</option>
+                <option value="16gb-5200" data-price="6200" data-ram-type="DDR5">16GB (2x8GB) Kingston Fury 5200MHz DDR5 — 6 200 ₽</option>
+                <option value="32gb-6000" data-price="11500" data-ram-type="DDR5">32GB (2x16GB) G.Skill Ripjaws 6000MHz DDR5 — 11 500 ₽</option>
+                <option value="64gb-6000" data-price="21900" data-ram-type="DDR5">64GB (2x32GB) Corsair Vengeance 6000MHz DDR5 — 21 900 ₽</option>
+                <option value="128gb-5600" data-price="44900" data-ram-type="DDR5">128GB (4x32GB) Corsair Vengeance 5600MHz DDR5 — 44 900 ₽</option>
               </select>
             </div>
           </div>
@@ -706,13 +715,13 @@
             </label>
             <div class="select-wrapper">
               <select id="case-select">
-                <option value="none" data-price="0" selected>Не выбрано — 0 ₽</option>
-                <option value="mistral" data-price="3500">Powercase Mistral Micro (Micro-ATX, 2 кулера) — 3 500 ₽</option>
-                <option value="cylon" data-price="4200">AeroCool Cylon Mini (RGB, Стекло) — 4 200 ₽</option>
-                <option value="cc560" data-price="5900">Deepcool CC560 (Mid-Tower, 4 LED кулера) — 5 900 ₽</option>
-                <option value="lancool" data-price="11500">Lian Li LANCOOL II Mesh (RGB, 3 кулера) — 11 500 ₽</option>
-                <option value="nzxt-h9" data-price="18900">NZXT H9 Flow (Premium Dual-Chamber, 4 кулера) — 18 900 ₽</option>
-                <option value="o11-dynamic" data-price="22500">Lian Li O11 Dynamic EVO (High-End Showcase) — 22 500 ₽</option>
+                <option value="none" data-price="0" data-supported-formfactors="" selected>Не выбрано — 0 ₽</option>
+                <option value="mistral" data-price="3500" data-supported-formfactors="mATX">Powercase Mistral Micro (mATX, 2 кулера) — 3 500 ₽</option>
+                <option value="cylon" data-price="4200" data-supported-formfactors="mATX">AeroCool Cylon Mini (RGB, mATX, Стекло) — 4 200 ₽</option>
+                <option value="cc560" data-price="5900" data-supported-formfactors="ATX mATX">Deepcool CC560 (Mid-Tower, ATX/mATX, 4 LED кулера) — 5 900 ₽</option>
+                <option value="lancool" data-price="11500" data-supported-formfactors="ATX mATX">Lian Li LANCOOL II Mesh (RGB, ATX/mATX, 3 кулера) — 11 500 ₽</option>
+                <option value="nzxt-h9" data-price="18900" data-supported-formfactors="ATX mATX">NZXT H9 Flow (Premium Dual-Chamber, ATX/mATX) — 18 900 ₽</option>
+                <option value="o11-dynamic" data-price="22500" data-supported-formfactors="ATX mATX">Lian Li O11 Dynamic EVO (High-End Showcase, ATX/mATX) — 22 500 ₽</option>
               </select>
             </div>
           </div>
@@ -781,12 +790,35 @@
           
           <div class="compatibility-status-box" id="compat-box">
             <div class="compat-item" id="compat-socket">
-              <span class="status-indicator pass"></span>
-              <span class="status-text">Совместимость сокета и платы</span>
+              <span class="status-indicator neutral"></span>
+              <span class="status-text">Сокет процессора и платы</span>
+            </div>
+            <div class="compat-item" id="compat-ram">
+              <span class="status-indicator neutral"></span>
+              <span class="status-text">Поколение памяти (DDR4/DDR5)</span>
+            </div>
+            <div class="compat-item" id="compat-size">
+              <span class="status-indicator neutral"></span>
+              <span class="status-text">Размер платы и корпуса</span>
+            </div>
+            <div class="compat-item" id="compat-cooling">
+              <span class="status-indicator neutral"></span>
+              <span class="status-text">Достаточность охлаждения</span>
             </div>
             <div class="compat-item" id="compat-power">
-              <span class="status-indicator pass"></span>
-              <span class="status-text">Мощность блока питания достаточна</span>
+              <span class="status-indicator neutral"></span>
+              <span class="status-text">Мощность блока питания</span>
+            </div>
+          </div>
+
+          <!-- Builder Assistant Panel -->
+          <div class="assistant-panel">
+            <div class="assistant-header">
+              <span class="assistant-avatar">🤖</span>
+              <h4>Помощник сборщика</h4>
+            </div>
+            <div class="assistant-content" id="assistant-text">
+              Выберите любой компонент слева, и я дам полезную подсказку по его выбору!
             </div>
           </div>
           
@@ -894,6 +926,6 @@
   </div>
 
   <!-- Custom Scripts -->
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>

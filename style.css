@@ -608,6 +608,60 @@ body.dark-theme .hero-glow-blob {
   background-color: var(--bg-secondary);
 }
 
+.builds-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.builds-tabs .tab-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.builds-tabs .tab-btn:hover {
+  border-color: var(--primary-blue);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.builds-tabs .tab-btn.active {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #ffffff;
+  box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* Card filtering animations */
+.build-card.filtered-out {
+  display: none !important;
+}
+
+.build-card:not(.filtered-out) {
+  animation: cardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .builds-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1144,6 +1198,62 @@ body.dark-theme .modal-config-summary {
 .status-indicator.neutral {
   background-color: var(--text-muted);
   box-shadow: 0 0 8px var(--border-color);
+}
+
+.status-indicator.warning {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+/* Builder Assistant Panel */
+.assistant-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+  transition: all var(--transition-fast);
+}
+
+.assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 8px;
+}
+
+.assistant-avatar {
+  font-size: 1.25rem;
+}
+
+.assistant-header h4 {
+  font-family: var(--font-headings);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 0;
+}
+
+.assistant-content {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.assistant-content strong {
+  color: var(--text-primary);
+}
+
+.assistant-content .warning-msg {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.assistant-content .error-msg {
+  color: var(--danger-color);
+  font-weight: 600;
 }
 
 .status-text {
