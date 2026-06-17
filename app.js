@@ -234,6 +234,66 @@ document.addEventListener('DOMContentLoaded', () => {
       psu: '850w',
       monitor: 'none',
       peripherals: 'none'
+    },
+    'study-start': {
+      cpu: 'i3-12100f',
+      cooling: 'ag400',
+      mb: 'b760',
+      ram: '16gb-5200',
+      gpu: 'none',
+      ssd: '512gb-nvme',
+      case: 'cc560',
+      psu: '500w',
+      monitor: 'none',
+      peripherals: 'none'
+    },
+    'study-standard': {
+      cpu: 'r5-5600',
+      cooling: 'ag400',
+      mb: 'b450',
+      ram: '16gb-3200',
+      gpu: 'gtx-1650',
+      ssd: '512gb-nvme',
+      case: 'mistral',
+      psu: '500w',
+      monitor: 'none',
+      peripherals: 'none'
+    },
+    'study-pro': {
+      cpu: 'i5-12400f',
+      cooling: 'se-224',
+      mb: 'b760',
+      ram: '16gb-5200',
+      gpu: 'gtx-1650',
+      ssd: '512gb-nvme',
+      case: 'cc560',
+      psu: '600w',
+      monitor: 'none',
+      peripherals: 'none'
+    },
+    'study-plus': {
+      cpu: 'r5-7600',
+      cooling: 'se-224',
+      mb: 'b650',
+      ram: '32gb-6000',
+      gpu: 'none',
+      ssd: '1tb-m2',
+      case: 'cc560',
+      psu: '600w',
+      monitor: 'none',
+      peripherals: 'none'
+    },
+    'study-max': {
+      cpu: 'i5-13600kf',
+      cooling: 'se-224',
+      mb: 'b760',
+      ram: '32gb-6000',
+      gpu: 'rtx-3060',
+      ssd: '1tb-m2',
+      case: 'cc560',
+      psu: '700w',
+      monitor: 'none',
+      peripherals: 'none'
     }
   };
 
@@ -385,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
       socketIndicator.className = 'status-indicator fail';
       socketText.textContent = `Несовместимость сокета! CPU: ${cpuSocket}, Плата: ${mbSocket}`;
       compatibilityPassed = false;
-      assistantMessage = `<span class="error-msg">❌ Ошибка сокета!</span> Выбранный процессор использует разъем (сокет) <strong>${cpuSocket}</strong>, а материнская плата — сокет <strong>${mbSocket}</strong>. Они не подключатся физически. Выберите плату с сокетом ${cpuSocket} или процессор с сокетом ${mbSocket}.`;
+      assistantMessage = `<span class="error-msg">Ошибка сокета!</span> Выбранный процессор использует разъем (сокет) <strong>${cpuSocket}</strong>, а материнская плата — сокет <strong>${mbSocket}</strong>. Они не подключатся физически. Выберите плату с сокетом ${cpuSocket} или процессор с сокетом ${mbSocket}.`;
     }
 
     // B. RAM Type compatibility (DDR4 vs DDR5)
@@ -405,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ramText.textContent = `Несовместимость памяти! Плата: ${mbRamType}, ОЗУ: ${ramType}`;
       compatibilityPassed = false;
       if (!assistantMessage) {
-        assistantMessage = `<span class="error-msg">❌ Ошибка стандарта памяти!</span> Выбранная материнская плата работает только с оперативной памятью <strong>${mbRamType}</strong>, а выбранная планка памяти относится к стандарту <strong>${ramType}</strong>. Пожалуйста, смените память на ${mbRamType}.`;
+        assistantMessage = `<span class="error-msg">Ошибка стандарта памяти!</span> Выбранная материнская плата работает только с оперативной памятью <strong>${mbRamType}</strong>, а выбранная планка памяти относится к стандарту <strong>${ramType}</strong>. Пожалуйста, смените память на ${mbRamType}.`;
       }
     }
 
@@ -428,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sizeText.textContent = `Плата не влезает! Корпус не поддерживает ${mbFormFactor}`;
         compatibilityPassed = false;
         if (!assistantMessage) {
-          assistantMessage = `<span class="error-msg">❌ Ошибка размеров!</span> Материнская плата формата <strong>${mbFormFactor}</strong> физически больше, чем поддерживает выбранный вами компактный корпус (он рассчитан на платы до <strong>${caseSupported}</strong>). Выберите плату Micro-ATX (mATX) или смените корпус на Mid-Tower.`;
+          assistantMessage = `<span class="error-msg">Ошибка размеров!</span> Материнская плата формата <strong>${mbFormFactor}</strong> физически больше, чем поддерживает выбранный вами компактный корпус (он рассчитан на платы до <strong>${caseSupported}</strong>). Выберите плату Micro-ATX (mATX) или смените корпус на Mid-Tower.`;
         }
       }
     }
@@ -451,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
         coolingIndicator.className = 'status-indicator warning';
         coolingText.textContent = `Слабый кулер! TDP ${coolingTdp}W, рекомендуется ≥${requiredTdp}W`;
         if (!assistantMessage) {
-          assistantMessage = `<span class="warning-msg">⚠️ Риск перегрева (Троттлинг)!</span> Выбранная система охлаждения рассчитана на TDP до <strong>${coolingTdp} Вт</strong>, а вашему процессору рекомендуется охлаждение мощностью не менее <strong>${requiredTdp} Вт</strong>. Выберите более мощный кулер или СЖО, чтобы процессор работал стабильно.`;
+          assistantMessage = `<span class="warning-msg">Риск перегрева (Троттлинг)!</span> Выбранная система охлаждения рассчитана на TDP до <strong>${coolingTdp} Вт</strong>, а вашему процессору рекомендуется охлаждение мощностью не менее <strong>${requiredTdp} Вт</strong>. Выберите более мощный кулер или СЖО, чтобы процессор работал стабильно.`;
         }
       }
     }
@@ -475,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
         powerText.textContent = `Недостаточно мощности БП! Выбрано ${psuWattage}W, нужно ≥${requiredPower}W`;
         compatibilityPassed = false;
         if (!assistantMessage) {
-          assistantMessage = `<span class="error-msg">❌ Недостаточно мощности БП!</span> Энергопотребление процессора (${cpuPower} Вт) и видеокарты (${gpuPower} Вт) с учетом безопасного запаса 40% требует блока питания мощностью не менее <strong>${requiredPower} Вт</strong>. Текущий БП на ${psuWattage} Вт не справится под полной нагрузкой.`;
+          assistantMessage = `<span class="error-msg">Недостаточно мощности БП!</span> Энергопотребление процессора (${cpuPower} Вт) и видеокарты (${gpuPower} Вт) с учетом безопасного запаса 40% требует блока питания мощностью не менее <strong>${requiredPower} Вт</strong>. Текущий БП на ${psuWattage} Вт не справится под полной нагрузкой.`;
         }
       }
     }
@@ -483,19 +543,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // F. Dynamic Assistant Focus Help (if no errors/warnings)
     if (!assistantMessage) {
       const fieldTips = {
-        'cpu': `🧠 <strong>Процессор (CPU)</strong> — мозг компьютера. Игры любят высокую частоту ядер, а рабочие приложения (монтаж, 3D) — их количество. Для учебы берите Core i3 / Ryzen 5, для игр — Core i5 / Ryzen 5-7, для тяжелой работы — i7-i9 или Ryzen 9.`,
-        'cooling': `❄️ <strong>Охлаждение процессора</strong> защищает его от перегрева. Для простых процессоров (i3/Ryzen 5) хватит недорогого воздушного кулера. Для Core i7/i9 и Ryzen 9 крайне рекомендуется система жидкостного охлаждения (СЖО) от 360мм.`,
-        'mb': `🔌 <strong>Материнская плата</strong> объединяет все детали. Обратите внимание на сокет (разъем для CPU), поддерживаемое поколение памяти (DDR4 или DDR5) и форм-фактор размера (чтобы плата влезла в выбранный корпус).`,
-        'ram': `💾 <strong>Оперативная память (RAM)</strong> хранит временные файлы программ. 16 ГБ — сегодняшний стандарт для обычных ПК и простых игр. 32 ГБ — идеальный выбор под игры на ультра-настройках и стриминг. 64+ ГБ — для сложной работы.`,
-        'gpu': `🎮 <strong>Видеокарта (GPU)</strong> — ключевая деталь в игровом компьютере. Для Full HD (1080p) гейминга достаточно RTX 4060, для 2K разрешения рекомендуется RTX 4070, а для бескомпромиссного 4K гейминга — RTX 4080 Super или RTX 4090.`,
-        'ssd': `⚡ <strong>Быстрый NVMe SSD</strong> ускоряет загрузку Windows, игр и приложений в 10 раз по сравнению со старыми жесткими дисками. Оптимальный объем — 1 ТБ или 2 ТБ, чтобы хватило на систему и современную библиотеку игр.`,
-        'case': `📦 <strong>Корпус</strong> определяет внешний вид и охлаждение. Позаботьтесь о хорошей продуваемости (сетка спереди). Убедитесь, что размер корпуса (Mid-Tower или Mini-Tower) совпадает или больше размера выбранной материнской платы.`,
-        'psu': `🔋 <strong>Блок питания (БП)</strong> питает весь ПК. Рекомендуем выбирать модели с сертификатом качества 80+ Gold и запасом мощности не менее 40% выше расчетного потребления процессора и видеокарты для тихой и стабильной работы.`,
-        'monitor': `🖥️ <strong>Монитор</strong>. Для бюджетных ПК берите 24 дюйма (1080p, IPS). Сбалансированный игровой или рабочий вариант — 27 дюймов (2K, IPS, 144Hz+). Для премиум сборок и работы с медиаконтентом выбирайте 32 дюйма с разрешением 4K.`,
-        'peripherals': `⌨️ <strong>Периферия</strong>. Мышь и клавиатура — органы управления вашим ПК. Геймерам рекомендуем механическую клавиатуру и мышь с качественным сенсором. Для работы и учебы отлично подойдут беспроводные тихие комплекты.`
+        'cpu': `<strong>Процессор (CPU)</strong> — мозг компьютера. Игры любят высокую частоту ядер, а рабочие приложения (монтаж, 3D) — их количество. Для учебы берите Core i3 / Ryzen 5, для игр — Core i5 / Ryzen 5-7, для тяжелой работы — i7-i9 или Ryzen 9.`,
+        'cooling': `<strong>Охлаждение процессора</strong> защищает его от перегрева. Для простых процессоров (i3/Ryzen 5) хватит недорогого воздушного кулера. Для Core i7/i9 и Ryzen 9 крайне рекомендуется система жидкостного охлаждения (СЖО) от 360мм.`,
+        'mb': `<strong>Материнская плата</strong> объединяет все детали. Обратите внимание на сокет (разъем для CPU), поддерживаемое поколение памяти (DDR4 или DDR5) и форм-фактор размера (чтобы плата влезла в выбранный корпус).`,
+        'ram': `<strong>Оперативная память (RAM)</strong> хранит временные файлы программ. 16 ГБ — сегодняшний стандарт для обычных ПК и простых игр. 32 ГБ — идеальный выбор под игры на ультра-настройках и стриминг. 64+ ГБ — для сложной работы.`,
+        'gpu': `<strong>Видеокарта (GPU)</strong> — ключевая деталь в игровом компьютере. Для Full HD (1080p) гейминга достаточно RTX 4060, для 2K разрешения рекомендуется RTX 4070, а для бескомпромиссного 4K гейминга — RTX 4080 Super или RTX 4090.`,
+        'ssd': `<strong>Быстрый NVMe SSD</strong> ускоряет загрузку Windows, игр и приложений в 10 раз по сравнению со старыми жесткими дисками. Оптимальный объем — 1 ТБ или 2 ТБ, чтобы хватило на систему и современную библиотеку игр.`,
+        'case': `<strong>Корпус</strong> определяет внешний вид и охлаждение. Позаботьтесь о хорошей продуваемости (сетка спереди). Убедитесь, что размер корпуса (Mid-Tower или Mini-Tower) совпадает или больше размера выбранной материнской платы.`,
+        'psu': `<strong>Блок питания (БП)</strong> питает весь ПК. Рекомендуем выбирать модели с сертификатом качества 80+ Gold и запасом мощности не менее 40% выше расчетного потребления процессора и видеокарты для тихой и стабильной работы.`,
+        'monitor': `<strong>Монитор</strong>. Для бюджетных ПК берите 24 дюйма (1080p, IPS). Сбалансированный игровой или рабочий вариант — 27 дюймов (2K, IPS, 144Hz+). Для премиум сборок и работы с медиаконтентом выбирайте 32 дюйма с разрешением 4K.`,
+        'peripherals': `<strong>Периферия</strong>. Мышь и клавиатура — органы управления вашим ПК. Геймерам рекомендуем механическую клавиатуру и мышь с качественным сенсором. Для работы и учебы отлично подойдут беспроводные тихие комплекты.`
       };
 
-      assistantMessage = fieldTips[lastFocusedField] || `🤖 <strong>Привет!</strong> Я ваш умный помощник. Выберите любой компонент слева, и я подробно расскажу, как сделать лучший выбор и соберу совместимую конфигурацию.`;
+      assistantMessage = fieldTips[lastFocusedField] || `<strong>Привет!</strong> Я ваш умный помощник. Выберите любой компонент слева, и я подробно расскажу, как сделать лучший выбор и соберу совместимую конфигурацию.`;
     }
 
     // Output message to assistant panel
@@ -596,6 +656,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateBuildsVisibility() {
     let visibleCount = 0;
+    let matchingCount = 0;
+    
     buildCards.forEach((card) => {
       const cardCats = card.getAttribute('data-categories') || '';
       const isExtra = card.classList.contains('extra-build');
@@ -604,10 +666,23 @@ document.addEventListener('DOMContentLoaded', () => {
       // Determine if it should be shown
       let shouldShow = false;
       if (matchesCategory) {
-        if (!isExtra) {
-          shouldShow = true;
-        } else if (showAllBuilds) {
-          shouldShow = true;
+        matchingCount++;
+        
+        if (currentFilter === 'all') {
+          // On 'all' tab, respect the original 'extra-build' class
+          if (!isExtra) {
+            shouldShow = true;
+          } else if (showAllBuilds) {
+            shouldShow = true;
+          }
+        } else {
+          // On a specific category tab, show the first 3 matching builds as main,
+          // and treat the rest as extra (meaning they are hidden unless showAllBuilds is true)
+          if (matchingCount <= 3) {
+            shouldShow = true;
+          } else if (showAllBuilds) {
+            shouldShow = true;
+          }
         }
       }
 
@@ -631,7 +706,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardCats = card.getAttribute('data-categories') || '';
       return currentFilter === 'all' || cardCats.split(' ').includes(currentFilter);
     });
-    const hasExtras = totalMatching.some(card => card.classList.contains('extra-build'));
+    
+    const defaultShownLimit = (currentFilter === 'all') ? 
+      Array.from(buildCards).filter(c => !c.classList.contains('extra-build')).length : 3;
+      
+    const hasExtras = totalMatching.length > defaultShownLimit;
     
     if (toggleBuildsBtn) {
       if (hasExtras) {
@@ -739,10 +818,10 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleBtn.addEventListener('click', () => {
         if (input.type === 'password') {
           input.type = 'text';
-          toggleBtn.textContent = '🙈';
+          toggleBtn.textContent = 'Скрыть';
         } else {
           input.type = 'password';
-          toggleBtn.textContent = '👁';
+          toggleBtn.textContent = 'Показать';
         }
       });
     }
