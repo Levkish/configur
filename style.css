@@ -827,6 +827,12 @@ body.dark-theme .hero-glow-blob {
   height: 32px;
 }
 
+.why-icon-wrapper img[src$=".png"] {
+  width: 88px;
+  height: 88px;
+  max-width: none;
+}
+
 .why-card h3 {
   font-size: 1rem;
   font-weight: 600;
