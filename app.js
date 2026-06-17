@@ -428,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Compatibility Checks
     let compatibilityPassed = true;
     let assistantMessage = '';
+    const cpuHasIntegrated = cpuOpt.getAttribute('data-has-integrated') === 'true';
 
     // A. Socket compatibility (CPU and Motherboard socket must match)
     const cpuSocket = cpuOpt.getAttribute('data-socket');
@@ -446,6 +447,14 @@ document.addEventListener('DOMContentLoaded', () => {
       socketText.textContent = `Несовместимость сокета! CPU: ${cpuSocket}, Плата: ${mbSocket}`;
       compatibilityPassed = false;
       assistantMessage = `<span class="error-msg">Ошибка сокета!</span> Выбранный процессор использует разъем (сокет) <strong>${cpuSocket}</strong>, а материнская плата — сокет <strong>${mbSocket}</strong>. Они не подключатся физически. Выберите плату с сокетом ${cpuSocket} или процессор с сокетом ${mbSocket}.`;
+    }
+
+    // A2. Discrete GPU check (if CPU has no integrated graphics and GPU is 'none')
+    if (cpuOpt.value !== 'none' && gpuOpt.value === 'none' && !cpuHasIntegrated) {
+      compatibilityPassed = false;
+      if (!assistantMessage) {
+        assistantMessage = `<span class="error-msg">Отсутствует видеокарта!</span> Выбранный вами процессор не имеет встроенного видеоядра (модели с суффиксом F/KF), поэтому для вывода изображения на экран обязательна дискретная видеокарта. Пожалуйста, выберите видеокарту в списке или замените процессор на модель со встроенной графикой.`;
+      }
     }
 
     // B. RAM Type compatibility (DDR4 vs DDR5)
@@ -522,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const powerIndicator = compatPowerEl.querySelector('.status-indicator');
     const powerText = compatPowerEl.querySelector('.status-text');
 
-    if (cpuOpt.value === 'none' || gpuOpt.value === 'none' || psuOpt.value === 'none') {
+    if (cpuOpt.value === 'none' || psuOpt.value === 'none' || (gpuOpt.value === 'none' && !cpuHasIntegrated)) {
       powerIndicator.className = 'status-indicator neutral';
       powerText.textContent = 'Мощность блока питания';
     } else {
@@ -570,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
       coolingOpt.value !== 'none' &&
       mbOpt.value !== 'none' &&
       ramOpt.value !== 'none' &&
-      gpuOpt.value !== 'none' &&
+      (gpuOpt.value !== 'none' || cpuHasIntegrated) &&
       ssdOpt.value !== 'none' &&
       caseOpt.value !== 'none' &&
       psuOpt.value !== 'none'
@@ -588,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Update PC Visual Preview depending on Selected Parts
     // Swapping renders dynamically depending on choices to make the UI feel responsive
-    if (cpuOpt.value === 'none' || gpuOpt.value === 'none') {
+    if (cpuOpt.value === 'none' || (gpuOpt.value === 'none' && !cpuHasIntegrated)) {
       previewImgEl.src = 'pc-config-assets-separate/hero/hero-pc-white-rgb.png';
     } else if (gpuOpt.value === 'rtx-4080-super' || gpuOpt.value === 'rtx-4090' || cpuOpt.value === 'i9-14900kf' || caseOpt.value === 'nzxt-h9' || caseOpt.value === 'o11-dynamic') {
       previewImgEl.src = 'pc-config-assets-separate/builds/enthusiast-pro-build.png';
